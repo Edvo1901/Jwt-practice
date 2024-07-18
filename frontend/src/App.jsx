@@ -1,19 +1,11 @@
-import { useEffect } from "react";
-import axios from "./utils/axios.customise"
+import { Outlet } from "react-router-dom";
+import HeaderBar from "./components/layout/HeaderBar";
 
 function App() {
-	useEffect(() => {
-		const fetchHello = async () => {
-			const res = await axios.get("/v1/api/")
-
-		}
-
-		fetchHello()
-	}, [])
-
 	return (
 		<>
-			Hello world
+			<HeaderBar />
+			<Outlet />
 		</>
 	);
 }
