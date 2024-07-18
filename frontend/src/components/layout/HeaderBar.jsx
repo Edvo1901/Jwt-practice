@@ -23,7 +23,7 @@ const items = [
 		icon: <SettingOutlined />,
 		children: [
 			{
-				label: "Login",
+				label: <Link to={"/login"}>Login</Link>,
 				key: "login",
 			},
 			{
