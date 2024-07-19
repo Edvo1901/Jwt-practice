@@ -1,10 +1,12 @@
 import { Button, Form, Input, notification } from "antd";
 import { loginUserAPI } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 const LoginPage = () => {
 	const navigate = useNavigate()
-
+	const {setAuth} = useContext(AuthContext)
 	const onFinish = async (values) => {
 		const {email, password} = values
 		const res = await loginUserAPI(email, password)
@@ -14,6 +16,13 @@ const LoginPage = () => {
 			notification.success({
 				message: "LOGIN USER",
 				description: "Succeed"
+			})
+			setAuth({
+				isAuthenticated: true,
+				user: {
+					email: res?.data?.user?.email ?? "",
+					name: res?.data?.user?.name ?? ""
+				}
 			})
 			navigate("/")
 		} else {
