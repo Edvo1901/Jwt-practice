@@ -3,6 +3,7 @@ const {
 	createUser,
 	handleLogin,
 	getUsers,
+	getAccount,
 } = require("../controllers/userController");
 const delay = require("../middleware/delay");
 const auth = require("../middleware/auth");
@@ -18,5 +19,6 @@ routerAPI.get("/", (req, res) => {
 routerAPI.post("/register", createUser);
 routerAPI.post("/login", handleLogin);
 routerAPI.get("/users", getUsers);
+routerAPI.get("/account", getAccount);
 
 module.exports = routerAPI; //export default
